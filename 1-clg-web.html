@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>U of M</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Montserrat;
+        font-weight: unset;
+        color: #fff;
+      }
+      #nav{
+        height: 150px;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.678);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 50px;
+        position: fixed;
+        z-index: 99;
+      }
+      #nav img{
+        height: 150px;
+      }
+      #nav h3{
+        text-transform: uppercase;
+      }
+      
+      .div-buttons{
+        display: flex;
+        gap: 20px;
+        cursor: pointer;
+      }
+      .Mb{
+        background-color: transparent;
+        border: none;
+        position: relative;
+        width: 171px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: all 0.5s;
+      }
+      .Mb span, .Mb span::after, .Mb span h3{
+        display: inline-block;
+      }
+      .Mb span:after{
+        content:'\00bb';
+        font-size: 30px;
+        position: absolute;
+        top: -7px;
+        right: 10px;
+        opacity: 0;
+        transition: 0.5s;  
+      }
+      .Mb .d:after{
+        content: '??';
+        top: 15px;
+        left: 100px;
+        font-size: 25px;
+      }
+
+      .Mb .e:after{
+        content: '\1F50D';
+        font-size: 20px;
+        top: 20px;
+      }
+      .Mb:hover .e:after{
+        right: -10px;
+      }
+
+      .Mb span{
+        transition: 0.5s;
+      }
+      .Mb:hover span{
+        padding-right:10px ;
+      }
+      .Mb .f:after{
+        top: 10px;
+        right: 25px;
+        transition: 0.5s;
+      }
+      .Mb:hover .f:after{
+        right: 15px;
+      }
+      .Mb:hover span:after{
+        right: -5px;
+        opacity: 1;  
+      }
+
+  
+      .gm{
+        background-color: transparent;
+        border: none;
+        position: relative;
+        width: 171px;
+        height: 60px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .gm:active{
+        background-color: #ffff;
+      }
+      .gm:active h3{
+        color: black;
+      }
+      .gm .bottom::after{
+        content: '';
+        height: 3px;
+        width: 0%;
+        position: absolute;
+        background-color: #ffff;
+        left: 0;
+        top: 57px;
+        transition: 0.2s;
+        transition-delay: 0.4s;
+      }
+      .gm:hover .bottom::after{
+        width: 100%;
+        transition-delay: 0s;
+      }
+
+      .gm .right::after{
+        content: "";
+        background-color: #ffff;
+        position: absolute;
+        bottom: -12px;
+        left: 100px;
+        bottom: 0px;
+        height: 0px;
+        width: 3px;
+        transition: 0.2s;
+        transition-delay: 0.3s;
+      }
+      .gm:hover .right::after{   
+        height: 60px;     
+        transition-delay: 0.1s;  
+      }
+      .gm .top::after{
+        content: '';
+        height: 3px;
+        width: 0%;
+        position: absolute;
+        background-color: #ffff;
+        right: 0px;
+        top: 0px;
+        transition: 0.2s;
+        transition-delay: 0.2s;
+      }
+      .gm:hover .top::after{
+        width: 100%;
+        transition-delay: 0.2s;
+      }
+
+      .gm .left::after{
+        content:"";
+        background-color: #ffff;
+        position: absolute;
+        height: 0px;
+        left: -3px;
+        width: 3px;
+        top: 0px;
+        transition: 0.1s;
+        transition-delay: 0.1s;
+      }
+      .gm:hover .left::after{
+        height: 60px;
+        transition-delay: 0.3s;
+      }
+      video{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        position: fixed;
+      }
+      #main{
+        position: relative;
+        background-color: rgba(0, 0, 0, 0.338);
+      }
+      #page1{
+        height: 100vh;
+        width: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+      }
+      #page1 h1{
+        font-size:40px;
+        font-weight: bold;
+        text-align: center;
+      }
+      #page1 h2{
+        text-align: center;
+      }
+      #page1 h3{
+        width: 55%;
+        font-size: 16px;
+        text-align: center;
+      }
+      #page2 {
+        height: 100vh;
+        width: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      #page2 h1{
+        font-weight: bold;
+      }
+      .hidden {
+        opacity: 0;
+        filter: blur(5px);
+        transform: translateX(-100%);
+        transition: all 2s;
+      }
+      .show{
+        opacity: 1;
+        filter: blur(0);
+        transform: translateX(0);
+      }
+      #page3{
+        height: 100vh;
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="nav" >
+      <img src="new_logo-removebg-preview (1).png">
+      <div class="div-buttons" style="margin-right: 30px;">
+        <button class="Mb"><span class="d"><h3>About</h3></span></button>
+        <button class="Mb"><span class="e"><h3 id = "find-friends"class="find-friends-js">Find Friends</h3></span></button>
+        <button class="Mb"><span class="f"><h3>Fun Stuff</h3></span></button>
+        <button class="gm" style="width:100px;"><span               class="g"><h3>Sign In</h3></span>
+          <span class="bottom"></span>
+          <span class="top"></span>
+          <span class="right"></span>
+          <span class="left"></span>       
+        </button>
+       
+      </div> 
+    </div>
+      <video autoplay loop muted src="Video1.mov">
+      </video>
+    <div id="main">
+      <div id="page1" class="hidden">
+        <h1>EXCLUSIVELY FOR THE STUDENTS OF UofM</h1>
+        <h2>ARRANGE GROUP ACTIVITESS, INTERACT WITH NEW PEOPLE AND MUCH MORE!</h2>
+        <h3>CAN BE ACCESSED ONLY BY LOGGING IN THROUGH COLLEGE MAIL ID.</h3>
+      </div>
+      <div id="page2" class="hidden">
+        <h1>JOIN AND HOST GROUP EVENTS!</h1>
+        <h3>FIND PEOPLE OF YOUR COURSE</h3>
+      </div>
+       <div id="page3" class="hidden">
+        <h2>LOGIN WITH YOUR COLLEGE ID TO MEET PEOPLE!</h2>
+       </div>
+    </div>
+    <script src="1-clg-web.js"></script>
+  </body>
+</html>
